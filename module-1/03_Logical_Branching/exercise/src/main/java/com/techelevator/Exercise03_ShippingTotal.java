@@ -22,7 +22,14 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45) ➔ 23.75
      */
     public double calculateShippingTotal(int weightPounds) {
-        return 0;
+        double costToShip = 0.0;
+        if(weightPounds > 40){
+            costToShip = (weightPounds-40)*.75 + .5*40;
+        }
+        else{
+            costToShip = weightPounds*.5;
+        }
+            return costToShip;
     }
 
     /*
@@ -38,7 +45,18 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, true) ➔ 21.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        return 0;
+        double costToShip = 0.0;
+        if(weightPounds > 40){
+            costToShip = (weightPounds-40)*.75 + .5*40;
+        }
+        else{
+            costToShip = weightPounds*.5;
+        }
+        if(hasDiscount){
+            costToShip = costToShip*.90;
+        }
+
+        return costToShip;
     }
 
     /*
@@ -53,6 +71,15 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, 0.2) ➔ 19.0
      */
     public double calculateShippingTotal(int weightPounds, double discountPercentage) {
-        return 0;
+
+        double costToShip = 0.0;
+        if(weightPounds > 40){
+            costToShip = (weightPounds-40)*.75 + .5*40;
+        }
+        else{
+            costToShip = weightPounds*.5;
+        }
+        costToShip = costToShip - costToShip*discountPercentage;
+        return costToShip;
     }
 }
