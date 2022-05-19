@@ -5,6 +5,10 @@ public class Lecture {
     /*
     1. Return the created array
     */
+    for(int i =0;i<100;i--)
+    {
+        int r = 7;
+    }
     public int[] returnArray() {
         int[] example = { 80, 8080, 443 };
         return example;
