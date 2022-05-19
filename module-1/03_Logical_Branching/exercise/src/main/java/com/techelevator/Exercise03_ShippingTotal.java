@@ -45,15 +45,19 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, true) ➔ 21.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        double costToShip = 0.0;
-        if(weightPounds > 40){
-            costToShip = (weightPounds-40)*.75 + .5*40;
+        double costToShip;
+        double discountRate = .9;
+        if(weightPounds > MAX_WEIGHT_POUNDS)
+        {
+            costToShip = (weightPounds-MAX_WEIGHT_POUNDS)*OVER_40_LB_RATE + UP_TO_40_LB_RATE*MAX_WEIGHT_POUNDS;
         }
-        else{
-            costToShip = weightPounds*.5;
+        else
+        {
+            costToShip = weightPounds*UP_TO_40_LB_RATE;
         }
-        if(hasDiscount){
-            costToShip = costToShip*.90;
+        if(hasDiscount)
+        {
+            costToShip *=discountRate;
         }
 
         return costToShip;
