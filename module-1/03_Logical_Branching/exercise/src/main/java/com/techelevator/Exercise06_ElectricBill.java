@@ -47,14 +47,14 @@ public class Exercise06_ElectricBill {
      */
     public double calculateElectricBill(double unitsUsed, boolean hasRenewableEnergy) {
         double electicBill;
-        if (unitsUsed > 100){
-            electicBill = (unitsUsed-100)*EXCESS_RATE + BASE_RATE*100;
+        if (unitsUsed > EXCESS_UNITS_LIMIT){
+            electicBill = (unitsUsed-EXCESS_UNITS_LIMIT)*EXCESS_RATE + BASE_RATE*100;
         }
         else{
             electicBill = unitsUsed*BASE_RATE;
         }
         if(hasRenewableEnergy){
-            electicBill *= .95;
+            electicBill *= DISCOUNT_FACTOR;
         }
         return electicBill;
     }
@@ -83,15 +83,16 @@ public class Exercise06_ElectricBill {
 
         double electicBill;
         double netUsage = unitsUsed - unitsReturned;
-        if (netUsage > 100){
-            electicBill = (netUsage-100)*EXCESS_RATE + BASE_RATE*100;
+        if (netUsage > EXCESS_UNITS_LIMIT){
+            electicBill = (netUsage-EXCESS_UNITS_LIMIT)*EXCESS_RATE + BASE_RATE*EXCESS_UNITS_LIMIT;
         }
         else{
             electicBill = netUsage*BASE_RATE;
         }
         if(unitsReturned>0 && unitsReturned<unitsUsed){
-            electicBill *= .95;
+            electicBill *= DISCOUNT_FACTOR;
         }
         return electicBill;
+
     }
 }
