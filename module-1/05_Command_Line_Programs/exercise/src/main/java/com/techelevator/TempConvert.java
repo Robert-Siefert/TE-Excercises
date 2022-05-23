@@ -14,11 +14,11 @@ public class TempConvert {
 		double convertedTemp = 0;
 		if (forC.equals("F") ) {
 			convertedTemp = (tempToConvert - 32) / 1.8;
-			System.out.println(convertedTemp + "°C");
+			System.out.println(tempToConvert + "°F is " + (int)convertedTemp + "°C");
 		}
 		if (forC.equals("C")) {
 			convertedTemp = tempToConvert * 1.8 + 32;
-			System.out.println( tempToConvert + "°C is " +convertedTemp + "°F");
+			System.out.println( tempToConvert + "°C is " +(int)convertedTemp + "°F");
 		}
 	}
 
