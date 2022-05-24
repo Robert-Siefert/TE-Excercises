@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Collections; // If this is cheating let me know, and I will write some loops for ya ;)
 import java.util.List;
 
 public class Exercises {
@@ -16,7 +17,10 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+
+		List<String> asList = new ArrayList<String>();
+		Collections.addAll(asList, stringArray);
+		return asList;
 	}
 
 	/*
@@ -26,7 +30,9 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+
+		return stringList.toArray(new String[0]);
+
 	}
 
 	/*
@@ -37,7 +43,15 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> asList = new ArrayList<String>();
+		Collections.addAll(asList, stringArray);
+		List<String> no4LetterWOrds = new ArrayList<>();
+		for (String n: asList) {
+			if(n.length() != 4){
+				no4LetterWOrds.add(n);
+			}
+		}
+		return no4LetterWOrds;
 	}
 
 	/*
@@ -47,7 +61,15 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> asList = new ArrayList<Double>();
+		double[] asDoubles = new double[intArray.length];
+		for (int i=0; i<intArray.length; i++) {
+			asList.add((double)intArray[i]/2);
+		}
+
+		return asList;
+
+
 	}
 
 	/*
@@ -57,7 +79,13 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int largest = 0;
+		for (int i=0; i<integerList.size(); i++) {
+			if (integerList.get(i) > largest) {
+				largest = integerList.get(i);
+			}
+		}
+		return largest;
 	}
 
 	/*
@@ -67,7 +95,14 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> onlyOddList = new ArrayList<>();
+		for (int i=0; i<integerArray.length;i++) {
+			if (integerArray[i]%2 == 1) {
+				onlyOddList.add(integerArray[i]);
+			}
+		}
+
+		return onlyOddList;
 	}
 
 	/*
@@ -78,6 +113,15 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int findTimes = 0;
+		for (Integer n: integerList) {
+			if (n == intToFind) {
+				findTimes++;
+			}
+		}
+		if (findTimes > 1 ) {
+			return true;
+		}
 		return false;
 	}
 
@@ -94,7 +138,21 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> fizzBuzzList = new ArrayList<>();
+		for (int i=0; i<integerArray.length;i++) {
+			if (integerArray[i]%3==0 && integerArray[i]%5 == 0) {
+				fizzBuzzList.add("FizzBuzz");
+			} else if (integerArray[i]%3==0) {
+				fizzBuzzList.add("Fizz");
+			} else if (integerArray[i] % 5 == 0) {
+				fizzBuzzList.add("Buzz");
+			} else {
+				fizzBuzzList.add(integerArray[i].toString());
+			}
+		}
+
+
+		return fizzBuzzList;
 	}
 
 	/*
@@ -105,7 +163,35 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> interleavedList = new ArrayList<>();
+		int smallerListSize = 0;
+		boolean isListOneBigger = true;
+		if (listOne.size()>listTwo.size()) {
+			isListOneBigger = true;
+			smallerListSize = listTwo.size();
+		} else if (listTwo.size()>=listOne.size()) {
+			isListOneBigger = false;
+			smallerListSize = listOne.size();
+
+		}
+
+		for (int i=0; i<smallerListSize;i++) {
+			interleavedList.add(listOne.get(i));
+			interleavedList.add(listTwo.get(i));
+		}
+		if (isListOneBigger) {
+			for (int i = smallerListSize; i < listOne.size(); i++) {
+				interleavedList.add(listOne.get(i));
+			}
+		}
+		else if (!isListOneBigger) {
+			for (int i = smallerListSize; i < listTwo.size();i++) {
+					interleavedList.add(listTwo.get(i));
+			}
+
+
+		}
+		return interleavedList;
 	}
 
 }

@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Lecture {
 
-	public static void main(String[] args) {
+	public static <list> void main(String[] args) {
 		System.out.println("####################");
 		System.out.println("       LISTS");
 		System.out.println("####################");
-
+		List<String> ninjas = new ArrayList<String>();
 		List<String> names = new ArrayList<String>();
 		names.add("Frodo");
 		names.add("Sam");
