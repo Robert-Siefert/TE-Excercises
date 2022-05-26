@@ -1,7 +1,6 @@
 package com.techelevator.cardexample;
 
 public class Card {
-	
 	private int suit;
 	private int rank;
 	private boolean faceDown = true; // Cards are usually initially face down, so set to true
