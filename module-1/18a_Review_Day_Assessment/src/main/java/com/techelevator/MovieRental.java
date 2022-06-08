@@ -59,6 +59,20 @@ public class MovieRental {
        String toString = "MOVIE: " + title +" - " + "FORMAT: " + format + " PRICE: $" + this.getRentalPrice();
         return toString;
    }
+   public double getLateFee(int dayslate){
+       if (dayslate == 0) {
+           return 0.00;
+       }
+       if (dayslate == 1) {
+           return 1.99;
+       }
+       if (dayslate == 2) {
+           return 3.99;
+       }
+       if (dayslate >= 3) {
+           return 19.99;
+       }
+   }
 
 
 }
