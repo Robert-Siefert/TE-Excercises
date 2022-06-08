@@ -72,6 +72,7 @@ public class MovieRental {
        if (dayslate >= 3) {
            return 19.99;
        }
+       return 0;
    }
 
 
