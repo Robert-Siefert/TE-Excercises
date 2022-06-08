@@ -47,8 +47,6 @@ public class MovieRental {
         }
         if (isPremium) {
             rentalPrice += 1;
-
-
         }
         return rentalPrice;
     }
@@ -56,6 +54,13 @@ public class MovieRental {
     public void setRentalPrice(double rentalPrice) {
         this.rentalPrice = rentalPrice;
     }
+
+   public String toString(){
+       String toString = "MOVIE: " + title +" - " + "FORMAT: " + format + " PRICE: $" + this.getRentalPrice();
+        return toString;
+   }
+
+
 }
 
 
