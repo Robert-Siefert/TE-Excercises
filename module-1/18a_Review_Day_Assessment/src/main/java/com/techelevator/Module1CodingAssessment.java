@@ -1,5 +1,8 @@
 package com.techelevator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +11,7 @@ public class Module1CodingAssessment {
 	public static void main(String[] args) {
 		Module1CodingAssessment mca = new Module1CodingAssessment();
 		mca.run();
+
 	}
 	List<MovieRental> movieRentals = new ArrayList<>();
 	private void run() {
@@ -22,6 +26,7 @@ public class Module1CodingAssessment {
 
 
 		printMovieList();
+		printMoviesToFIle();
 
 	}
 
@@ -29,6 +34,20 @@ public class Module1CodingAssessment {
 		for (MovieRental movieRental: movieRentals) {
 			System.out.println(movieRental.toString());
 		}
+	}
+	public void printMoviesToFIle()  {
+
+		File destinationFile = new File("movies.txt");
+		try (PrintWriter writer = new PrintWriter(destinationFile)){
+			for (MovieRental movieRental: movieRentals) {
+				writer.println(movieRental.toString());
+			}
+		}
+		catch (FileNotFoundException e){
+			e.printStackTrace();
+		}
+
+
 	}
 
 }
