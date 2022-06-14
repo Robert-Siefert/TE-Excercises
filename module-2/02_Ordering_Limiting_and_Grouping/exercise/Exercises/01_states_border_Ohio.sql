@@ -3,4 +3,7 @@
 -- The city name and state abbreviation should be returned as a single column called 'name_and_state' and should contain values such as "Detroit, MI".
 -- Order the results alphabetically by state abbreviation and then by city name.
 -- (20 rows)
-
+select city_name || ', ' || state_abbreviation as name_and_state, population
+from city
+where state_abbreviation = 'PA' or state_abbreviation = 'WV' or state_abbreviation = 'KY' or state_abbreviation = 'IN' or state_abbreviation = 'MI'
+order by state_abbreviation, city_name
