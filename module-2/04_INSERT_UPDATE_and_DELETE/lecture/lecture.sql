@@ -1,10 +1,14 @@
 -- INSERT
 
 -- Add Disneyland to the park table. (It was established on 7/17/1955, has an area of 2.1 square kilometers and does not offer camping.)
+select * from park
 
+insert into park (park_name, date_established, area, has_camping)
+values('DisneyLand', '7/17/1955', 2.1, false)
 
 -- Add Hawkins, IN (with a population of 30,000 and an area of 38.1 square kilometers) and Cicely, AK (with a popuation of 839 and an area of 11.4 square kilometers) to the city table.
-
+insert into city (city_name, state_abbreviation, population, area)
+values ('Hawkins', 'AK', 839, 11.4)
 
 -- Since Disneyland is in California (CA), add a record representing that to the park_state table.
 
