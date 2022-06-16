@@ -1,3 +1,9 @@
--- 21. For every person in the person table with the first name of "George", list the number of movies they've been in--include all Georges, even those that have not appeared in any movies. Display the names in alphabetical order. (59 rows)
--- Name the count column 'num_of_movies'
 
+select count(movie.title) as num_of_movies, person_name
+from movie
+join movie_actor on movie_actor.movie_id = movie.movie_id
+join person on person_id = movie_actor.actor_id or person_id = movie.director_id
+where person_name like 'George %'
+group by person_id
+order by person.person_name asc;
+--
