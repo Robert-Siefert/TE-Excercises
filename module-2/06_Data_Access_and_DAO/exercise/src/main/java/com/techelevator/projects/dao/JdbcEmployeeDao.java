@@ -60,20 +60,56 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
 	@Override
 	public List<Employee> getEmployeesByProjectId(int projectId) {
-		return new ArrayList<>();
+		List<Employee> employees = new ArrayList<>();
+		String sql = "SELECT employee.employee_id, department_id, first_name, last_name, birth_date, hire_date " +
+				"FROM employee join project_employee on employee.employee_id = project_employee.employee_id " +
+				"WHERE project_id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql,projectId);
+		while (results.next()) {
+			Employee employee = new Employee();
+			employee.setId(results.getInt("employee_id"));
+			employee.setDepartmentId(results.getInt("department_id"));
+			employee.setFirstName(results.getString("first_name"));
+			employee.setLastName(results.getString("last_name"));
+			employee.setBirthDate(results.getDate("birth_date").toLocalDate());
+			employee.setHireDate(results.getDate("hire_date").toLocalDate());
+			employees.add(employee);
+		}
+		return employees;
 	}
 
 	@Override
 	public void addEmployeeToProject(int projectId, int employeeId) {
+
+		String sql = "Insert into project_employee(project_id,employee_id) VALUES(?,?)";
+
+		jdbcTemplate.update(sql,projectId,employeeId);
 	}
 
 	@Override
 	public void removeEmployeeFromProject(int projectId, int employeeId) {
+
+		String sql = "DELETE from project_employee where project_id = ? and employee_id = ?";
+		jdbcTemplate.update(sql,projectId,employeeId);
 	}
 
 	@Override
 	public List<Employee> getEmployeesWithoutProjects() {
-		return new ArrayList<>();
+		List<Employee> employees = new ArrayList<>();
+		String sql = "SELECT employee.employee_id, department_id, first_name, last_name, birth_date, hire_date " +
+				"FROM employee WHERE employee_id not in(select employee_id from project_employee)";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+		while (results.next()) {
+			Employee employee = new Employee();
+			employee.setId(results.getInt("employee_id"));
+			employee.setDepartmentId(results.getInt("department_id"));
+			employee.setFirstName(results.getString("first_name"));
+			employee.setLastName(results.getString("last_name"));
+			employee.setBirthDate(results.getDate("birth_date").toLocalDate());
+			employee.setHireDate(results.getDate("hire_date").toLocalDate());
+			employees.add(employee);
+		}
+		return employees;
 	}
 
 
