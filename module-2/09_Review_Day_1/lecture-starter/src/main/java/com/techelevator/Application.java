@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.techelevator.homes.DAO.HomeDAO;
+import com.techelevator.homes.DAO.SQLHomeDAO;
 import com.techelevator.homes.exception.HomeNotFoundException;
 import com.techelevator.homes.model.Home;
 import com.techelevator.homes.view.UserInterface;
@@ -17,6 +19,8 @@ public class Application {
     private final String DELETE_HOME = "3";
     private final String SEARCH_FOR_HOME_BY_MLS = "4";
     private final String EXIT_PROGRAM = "5";
+
+    private HomeDAO homeDAO;
 
 
     /**
@@ -38,7 +42,7 @@ public class Application {
         ui = new UserInterface();
 
         //add DAOs here ...
-
+        homeDAO = new SQLHomeDAO(dataSource);
     }
 
     private void run() {
@@ -85,6 +89,8 @@ public class Application {
 
     private void addHome() {
 
+        Home homeToAdd = ui.getHomeInfo();
+        homeDAO.addHome(homeToAdd);
 
     }
 
