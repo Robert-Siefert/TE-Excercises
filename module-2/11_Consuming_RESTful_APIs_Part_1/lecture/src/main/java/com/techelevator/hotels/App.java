@@ -20,11 +20,11 @@ public class App {
             consoleService.printMainMenu();
             menuSelection = consoleService.promptForMenuSelection();
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                consoleService.printHotels(hotelService.listHotels());
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+                consoleService.printReviews(hotelService.listReviews());
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+                consoleService.printHotel(hotelService.getHotelById(1));
             } else if (menuSelection == 4) {
                 System.out.println("Not implemented");
             } else if (menuSelection == 5) {
