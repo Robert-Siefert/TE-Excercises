@@ -1,14 +1,19 @@
 package com.techelevator.homes.model;
 
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public class Home {
 
     private int homeId;
+
     private String mlsNumber;
     private Address address;
+    @Positive
     private double numberOfBedrooms;
+    @Positive
     private double numberOfBathrooms;
+    @Positive
     private BigDecimal price;
     private String shortDescription;
 

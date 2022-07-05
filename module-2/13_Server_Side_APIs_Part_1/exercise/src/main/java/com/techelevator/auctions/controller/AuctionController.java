@@ -3,6 +3,7 @@ package com.techelevator.auctions.controller;
 import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.dao.MemoryAuctionDao;
 import com.techelevator.auctions.model.Auction;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

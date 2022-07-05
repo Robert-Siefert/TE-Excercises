@@ -2,11 +2,13 @@ package com.techelevator.jghomes;
 
 import com.techelevator.homes.model.Home;
 import com.techelevator.homes.view.UserInterface;
+import com.techelevator.jghomes.services.HomeClientService;
 
 
 public class Application {
 
     private UserInterface ui;
+    private HomeClientService homeCS;
 
     private final String GET_LIST_OF_HOMES = "1";
     private final String ADD_HOME = "2";
@@ -27,6 +29,7 @@ public class Application {
 
     public Application() {
         ui = new UserInterface();
+        homeCS = new HomeClientService();
 
     }
 
@@ -65,14 +68,14 @@ public class Application {
     private void searchForHomeByMLSId() {
        String mlsId = ui.askUserForMLSID();
 
-       //go call the HomeClientService class
+        ui.printHome(homeCS.getHomeByMLSID(mlsId));
 
 
     }
 
     private void retrieveHomes() {
 
-        //go call the HomeClientService class and send results to UI
+       ui.printHomes(homeCS.retrieveAllHomes());
 
 
     }
@@ -81,7 +84,7 @@ public class Application {
 
         Home newHome = ui.getHomeInfo();
 
-        //go call the HomeClientService class and take the Home object in the response and send to UI...
+        ui.printHome(homeCS.addHome(newHome));
 
 
     }
@@ -89,7 +92,11 @@ public class Application {
     private void deleteHome() {
         String mlsId = ui.askUserForMLSID();
 
-        //go call the HomeClientService class and if successful, let the ui know that home with 'mlsid' selected was deleted
+        if (homeCS.deleteHome(mlsId)) {
+            ui.printStatusMessage("Home:"+mlsId + "was deleted");
+        }else{
+            ui.printStatusMessage("Home not Found");
+        }
 
 
     }
