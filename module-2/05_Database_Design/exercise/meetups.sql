@@ -95,3 +95,4 @@ INSERT INTO EVENT_MEMBER(member_id,event_number)VALUES((SELECT member_id from me
 INSERT INTO EVENT_MEMBER(member_id,event_number)VALUES((SELECT member_id from members where first_name = 'Steven'),(SELECT event_number from events where description = 'Magic convention'));
 INSERT INTO EVENT_MEMBER(member_id,event_number)VALUES((SELECT member_id from members where first_name = 'Thor'),(SELECT event_number from events where description = 'Space party'));
 INSERT INTO EVENT_MEMBER(member_id,event_number)VALUES((SELECT member_id from members where first_name = 'Steve'),(SELECT event_number from events where description = 'Avengers club meetup'));
+
