@@ -1,0 +1,96 @@
+#headline {
+    grid-area: headline;
+}
+#student-picture{
+    grid-area: student-picture;
+    margin-left: auto;
+    margin-right: auto;
+}
+#student-quote{
+    grid-area: quote;
+}
+#student-profile{
+    grid-area: profile;
+}
+#student-contact{
+    grid-area: contact;
+    margin: auto;
+}
+#main-grid{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+       "headline headline student-picture"
+       "quote quote student-picture"
+       "profile profile contact"
+       "experience experience experience"
+    ;
+    height: 100vh;
+    row-gap: 20px;
+    column-gap: 50px;
+    align-items: center;
+    
+}
+#experience-code{
+    grid-area: code;
+}
+#experience-database{
+    grid-area: database;
+}
+#experience-web{
+    grid-area: web;
+}
+#experience-design{
+    grid-area: design;
+}
+
+#experience-grid{
+    grid-area: experience;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "code code"
+    "database database"
+    "web design"
+}
+@media screen and (max-width: 1024px) {
+    #main-grid{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "headline headline"
+    "quote student-picture"
+    "quote contact"
+    "profile profile"
+    "experience experience";
+    row-gap: 20px;
+    column-gap: 35px;
+    }
+    #experience-grid{
+    grid-template-areas: 
+    "code web"
+    "database design";
+
+    }
+
+}
+@media screen and (max-width: 450px) {
+    #main-grid{
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "headline"
+        "student-picture"
+        "contact"
+        "quote"
+        "profile"
+        "experience"
+    }
+    #experience-grid{
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "code"
+        "web"
+        "database"
+        "design";
+    }
+}
