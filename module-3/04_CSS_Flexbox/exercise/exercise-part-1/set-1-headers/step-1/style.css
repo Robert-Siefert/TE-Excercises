@@ -16,8 +16,8 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  flex: auto;
-  flex-direction: row;
+  display:flex;
+  flex-direction: row;  
 }
 
 li {
@@ -27,6 +27,7 @@ li {
   color: #707070;
   padding: 0 20px 0 0;
   margin-left: 20px;
+  
 }
 
 a,
