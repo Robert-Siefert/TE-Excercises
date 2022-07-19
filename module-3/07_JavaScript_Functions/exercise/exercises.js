@@ -20,6 +20,23 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted(gpa,satScore =0, recommendation = false){
+    if(gpa >= 4.0){
+        return true;
+    }
+    if(satScore >= 1300){
+        return true;
+    }
+    if(gpa >= 3.0 && recommendation){
+        return true;
+    }
+    if(satScore >=1200 && recommendation){
+        return true;
+    }
+    return false;
+
+}
+
 /**
  * Write a function called useParameterToFilterArray that takes an anonymous
  * function and uses that in the `unfilteredArray` filter function. Return the result.
@@ -28,6 +45,10 @@
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(x){
+    return unfilteredArray.filter(x);
+}
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -42,6 +63,9 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
+function makeNumber(first, second = ''){
+    return parseInt(first + second);
+}
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -49,6 +73,13 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {...number} num a series of numbers to add together
  * @returns {number} the sum of all the parameters (or arguments)
  */
+
+function addAll(){
+    arguments.forEach(element => {
+        sum = sum + element;
+    });
+    return sum;
+}
 
 /*
  * Write and document a function called makeHappy that takes
