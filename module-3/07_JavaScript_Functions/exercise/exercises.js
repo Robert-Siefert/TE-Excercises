@@ -75,10 +75,10 @@ function makeNumber(first, second = ''){
  */
 
 function addAll(){
-    arguments.forEach(element => {
-        sum = sum + element;
-    });
-    return sum;
+
+    const argumentsAsArray = Array.from(arguments);
+
+    return argumentsAsArray.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 }
 
 /*
@@ -86,6 +86,16 @@ function addAll(){
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+/**
+ * 
+ * @param {words[]} a series of words to add Happy to
+ * @returns{happyWords[]} the words are no longer sad
+ * 
+ */
+function makeHappy(words){
+    return words.map(x => 'Happy ' + x);
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -105,6 +115,20 @@ function addAll(){
  * Use `map` and an anonymous function.
  */
 
+/**
+ * 
+ * @param {addresses} an array of objects containing address information
+ * 
+ * @returns {address[]} an array of strings with the full address
+ */
+
+function getFullAddressesOfProperties(addresses){
+
+    return addresses.map(x => x.streetNumber + ' ' + x.streetName + ' ' +  x.streetType + ' ' + x.city +' ' +  x.state +' ' +  x.zip);
+}
+
+
+
 /** 
  * Write and document a function called findLargest that uses `forEach`
  * to find the largest element in an array.
@@ -119,6 +143,32 @@ function addAll(){
  * @param {number[]|string[]} searchArray the array to search
  * @returns {number|string} the number or string that is largest
  **/
+
+ 
+function findLargest(things){
+    let x = 0;
+    let y = 'a';
+    things.forEach((element) => {
+        if(typeof element == 'number'){
+            if(element > x){
+                x = element;
+            }
+        }else{
+            if(element.localeCompare(y) > 0){
+                y = element;
+            }
+
+        }
+
+    });
+    if( x == 0){
+        return y;
+    }
+    return x;
+
+
+}
+
 
 
 /*
