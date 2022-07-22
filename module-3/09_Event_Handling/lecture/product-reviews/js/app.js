@@ -59,12 +59,49 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
+document.addEventListener('DOMContentLoaded',() =>{
+
+
+
 // Set the product reviews page title.
 setPageTitle();
 // Set the product reviews page description.
 setPageDescription();
 // Display all of the product reviews on our page.
 displayReviews();
+
+const desc = document.querySelector('.description');
+desc.addEventListener('click', (event) => {
+  toggleDescriptionEdit(event.target);
+
+});
+
+const inputDesc = document.getElementById('inputDesc');
+inputDesc.addEventListener('keyup', (event) =>{
+  if(event.key === 'Enter'){
+      exitDescriptionEdit(event.target,true);
+  }
+  if(event.key === 'Escape'){
+    exitDescriptionEdit(event.target,false);
+  }
+  
+});
+
+inputDesc.addEventListener('mouseleave', (event) => {
+
+  exitDescriptionEdit(event.target,false);
+});
+
+const btnToggleForm = document.getElementById('btnToggleForm');
+btnToggleForm.addEventListener('click', (event) => {
+
+  showHideForm();
+
+});
+
+
+
+});
 
 /**
  * Hide the description and show the text box.
