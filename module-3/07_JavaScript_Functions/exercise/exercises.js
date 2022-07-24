@@ -146,27 +146,16 @@ function getFullAddressesOfProperties(addresses){
 
  
 function findLargest(things){
-    let x = 0;
-    let y = 'a';
+    let x = '0';
     things.forEach((element) => {
-        if(typeof element == 'number'){
+      
+        
             if(element > x){
                 x = element;
             }
-        }else{
-            if(element.localeCompare(y) > 0){
-                y = element;
-            }
 
-        }
-
-    });
-    if( x == 0){
-        return y;
-    }
-    return x;
-
-
+        });
+        return x;
 }
 
 

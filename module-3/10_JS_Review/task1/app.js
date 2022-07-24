@@ -53,3 +53,20 @@ const homes =  [
 
 //write your code below
 
+console.log("This is with a foreach loop")
+homes.forEach((home) => {
+
+  console.log(home.mlsId + ', ' + home.address.zip + ', ' + home.price);
+
+
+
+});
+
+function standardForLoop(array){
+
+  for(let i= 0; i < array.length; i++){
+    console.log(array[i].mlsId + ', ' + array[i].address.zip + ', ' + array[i].price);
+  }
+}
+console.log("this is with a standard for loop")
+standardForLoop(homes);
