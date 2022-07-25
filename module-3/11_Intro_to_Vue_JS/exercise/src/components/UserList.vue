@@ -23,7 +23,12 @@
           </select>
         </td>
       </tr>
-      <!-- user listing goes here -->
+      <tr v-for="user in users" v-bind:key="user.username">
+          <td> {{user.firstName}} </td>
+          <td> {{user.lastName}} </td>
+          <td> {{user.username}} </td>
+          <td> {{user.emailAddress}} </td>
+      </tr>
     </tbody>
   </table>
 </template>
@@ -33,6 +38,7 @@ export default {
   name: 'user-list',
   data() {
     return {
+      filter:{firstName:'', lastName: '',username:'',emailAddress:'',status:''},
       users: [
         { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active' },
         { firstName: 'Anna', lastName: 'Bell', username: 'abell', emailAddress: 'abell@yahoo.com', status: 'Active' },
