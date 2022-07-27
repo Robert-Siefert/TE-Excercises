@@ -23,7 +23,7 @@
           </select>
         </td>
       </tr>
-      <tr v-for="user in users" v-bind:key="user.username">
+      <tr v-for="user in users" v-bind:key="user.username" v-bind:class="{ disabled: user.status === 'Disabled' }">
           <td> {{user.firstName}} </td>
           <td> {{user.lastName}} </td>
           <td> {{user.username}} </td>
