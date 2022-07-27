@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="main">
-    <h1>Product Reviews for </h1>
-    <p class="description"></p>
+    <h1>Product Reviews for </h1>       <!-- TODO: Get this from the Vuex store -->
+    <p class="description"></p>         <!-- TODO: Get this from the Vuex store -->   
     <div class="well-display">
       <average-summary />
       <star-summary />

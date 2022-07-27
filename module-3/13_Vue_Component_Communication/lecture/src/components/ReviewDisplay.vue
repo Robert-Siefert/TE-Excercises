@@ -14,10 +14,7 @@
     <p>{{ review.review }}</p>
     <p>
       Favorite?
-      <input
-        type="checkbox"
-        v-bind:checked="review.favorited"
-      />
+      <input type="checkbox" v-bind:checked="review.favorited"/>    <!-- TODO: Add event handling -->
     </p>
   </div>
 </template>
@@ -28,6 +25,8 @@ export default {
   props: ["review"],
   methods: {
     onFavoritedChange() {
+
+      //TODO:  This needs completed to save the the change of marking a review as favorited
 
     }
   }

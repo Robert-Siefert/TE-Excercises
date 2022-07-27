@@ -11,11 +11,16 @@ export default {
   methods: {
     updateFilter() {
 
+      //TODO:  call mutation to reset the filter
+
     }
   },
   computed: {
     averageRating() {
+
+      //TODO:  get the reviews from the Vuex store
       const reviews = [];
+      
       let sum = reviews.reduce((currentSum, review) => {
         return currentSum + review.rating;
       }, 0);
