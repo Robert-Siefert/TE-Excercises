@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
-        <td>
-          <select id="statusFilter">
+        <td><input type="text" id="firstNameFilter" v-model="filter.firstName"/></td>
+        <td><input type="text" id="lastNameFilter" v-model="filter.lastName"/></td>
+        <td><input type="text" id="usernameFilter" v-model="filter.username"/></td>
+        <td><input type="text" id="emailFilter" v-model="filter.emailAddress"/></td>
+        <td>np
+          <select id="statusFilter" v-model="filter.status">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Disabled">Disabled</option>
@@ -28,6 +28,7 @@
           <td> {{user.lastName}} </td>
           <td> {{user.username}} </td>
           <td> {{user.emailAddress}} </td>
+          <td> {{user.status}} </td>
       </tr>
     </tbody>
   </table>
@@ -47,6 +48,22 @@ export default {
         { firstName: 'Katie', lastName: 'Jackson', username: 'kjackson', emailAddress: 'kjackson@yahoo.com', status: 'Active' },
         { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Disabled' }
       ]
+    }
+  },
+  computed: {
+    filteredList(){
+        let filteredUsers = this.users.filter(user =>{ 
+          return user.firstName.toLowerCase().includes(this.filter.firstName.toLowerCase()) &&
+          user.lastName.toLowerCase().includes(this.filter.lastName.toLowerCase()) &&
+          user.emailAddress.toLowerCase().includes(this.filter.emailAddress.toLowerCase()) &&
+          user.username.toLowerCase().includes(this.filter.username.toLowerCase()) &&
+          user.status.includes(this.filter.status)
+          
+          
+          });
+       
+
+      return filteredUsers;
     }
   }
 }
