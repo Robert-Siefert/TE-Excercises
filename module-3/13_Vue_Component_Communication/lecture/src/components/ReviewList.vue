@@ -1,9 +1,7 @@
 <template>
   <div class="reviews">
     <review-display
-      v-for="review in filteredReviews"
-      v-bind:key="review.title"
-      v-bind:review="review"
+      v-for="review in filteredReviews" v-bind:key="review.title" v-bind:review="review"
     />
   </div>
 </template>
@@ -18,7 +16,11 @@ export default {
   },
   computed: {
     filteredReviews() {
+
+      //TODO:  Retrieve the current filter value from the Vuex store
       const reviewsFilter = -1;
+
+      //TODO:  Retrieve the reviews array from the Vuex store
       const reviews = [];
       return reviews.filter(review => {
         return reviewsFilter === 0 ? true : reviewsFilter === review.rating;
