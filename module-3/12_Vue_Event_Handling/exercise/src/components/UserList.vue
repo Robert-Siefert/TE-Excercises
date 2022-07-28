@@ -52,7 +52,8 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button @click="flipStatus(user.id)" v-if='user.status == "Active" ' class="btnEnableDisable">Disable</button>
+            <button @click="flipStatus(user.id)" v-if='user.status == "Disabled" ' class="btnEnableDisable">Enable</button>
           </td>
         </tr>
       </tbody>
@@ -83,7 +84,7 @@
         <label for="emailAddress">Email Address:</label>
         <input type="text" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
-      <button type="submit" class="btn save">Save User</button>
+      <button type="submit" class="btn save" v-on:click="saveUser()">Save User</button>
     </form>
   </div>
 </template>
@@ -164,6 +165,18 @@ export default {
   methods: {
     saveUser(){
       this.users.push(this.newUser);
+    },
+    flipStatus(userID){
+      let user = this.users.find(x => x.id == userID);
+
+      if(user.status == 'Disabled'){
+        user.status = 'Active';
+      }else{
+        user.status = 'Disabled';
+      }
+
+
+
     }
 
   },
