@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" @click='checkAll()' v-model='isCheckAll' />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,7 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-model="selectedUserIDs" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -60,9 +60,9 @@
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+      <button :disabled = actionButtonDisabled @click="enableSelectedUsers()">Enable Users</button>
+      <button :disabled = actionButtonDisabled @click="disableSelectedUsers()">Disable Users</button>
+      <button :disabled = actionButtonDisabled @click="deleteSelectedUsers()">Delete Users</button>
     </div>
 
     <button v-on:click="showForm = true">Add New User</button>
@@ -94,6 +94,7 @@ export default {
   name: "user-list",
   data() {
     return {
+      isCheckAll:false,
       showForm: false,
       filter: {
         firstName: "",
@@ -159,7 +160,8 @@ export default {
           emailAddress: "msmith@foo.com",
           status: "Disabled"
         }
-      ]
+      ],
+      selectedUserIDs: []
     };
   },
   methods: {
@@ -174,13 +176,63 @@ export default {
       }else{
         user.status = 'Disabled';
       }
+      
 
 
+    },
+    checkbox(user){
+        if(!this.selectedUserIDs.includes(user.id)){
+          this.selectedUserIDs.push(user.id);
+        }else{
+          let index = this.selectedUserIDs.indexOf(user.id);
+          this.selectedUserIDs.splice(index, 1);
+        }
+    },
+    enableSelectedUsers(){
 
+      this.selectedUserIDs.forEach(userID => {
+        let user = this.users.find(x => x.id == userID);
+        user.status = 'Active';
+
+      })
+      this.selectedUserIDs = [];
+
+    },
+    disableSelectedUsers(){
+      this.selectedUserIDs.forEach(userID => {
+        let user = this.users.find(x => x.id == userID);
+        user.status = 'Disabled';
+
+    })
+    this.selectedUserIDs = [];
+
+    },
+    deleteSelectedUsers(){
+
+      this.users = this.users.filter( user =>{
+        return !this.selectedUserIDs.includes(user.id)
+      })
+      
+      
+    },
+    checkAll(){
+      if(this.isCheckAll){
+        this.selectedUserIDs = [];
+      }else{
+        this.users.forEach(user => {
+          this.selectedUserIDs.push(user.id);
+        })
+      }
     }
-
   },
   computed: {
+    actionButtonDisabled(){
+      if(this.selectedUserIDs.length === 0){
+        return true;
+      }else{
+        return false;
+      }
+    },
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
