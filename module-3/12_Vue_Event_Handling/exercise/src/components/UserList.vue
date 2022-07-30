@@ -84,7 +84,7 @@
         <label for="emailAddress">Email Address:</label>
         <input type="text" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
-      <button type="submit" class="btn save" v-on:click="saveUser()">Save User</button>
+      <button type="submit" class="btn save" v-on:click.prevent="saveUser()">Save User</button>
     </form>
   </div>
 </template>
@@ -166,7 +166,9 @@ export default {
   },
   methods: {
     saveUser(){
+      this.newUser.id = this.users.length + 1;
       this.users.push(this.newUser);
+      this.showForm = false;
     },
     flipStatus(userID){
       let user = this.users.find(x => x.id == userID);

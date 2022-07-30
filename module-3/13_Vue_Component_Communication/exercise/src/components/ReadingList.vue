@@ -1,12 +1,16 @@
 <template>
   <div class="book-container">
-
+  <book-card></book-card>
   </div>
 </template>
 
 <script>
+import BookCard from '../components/BookCard.vue';
 
 export default {
+    components: {
+      BookCard
+    },
     name: 'reading-list'
 }
 </script>
