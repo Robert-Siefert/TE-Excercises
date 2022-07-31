@@ -32,7 +32,14 @@ export default new Vuex.Store({
       }
     ]
   },
-  mutations: {},
+  mutations: {
+    TOGGLE_STATUS(state, book){
+      book.read = !book.read;
+    },
+    ADD_BOOK(state, book){
+      state.books.push(book);
+    }
+  },
   actions: {},
   modules: {},
   strict: true
