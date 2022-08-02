@@ -78,7 +78,7 @@ public class JDBCHomeDAO implements HomeDAO{
                 newHome.getAddress().getZip()
         );
 
-        String homeSQL = "INSERT INTO home (mlsnumber, addressid, numberofbathrooms, numberofbedrooms, price, shortdescription) " +
+        String homeSQL = "INSERT INTO home (mlsnumber, addressid, numberofbathrooms, numberofbedrooms, price, shortdescription, imageName) " +
                 "VALUES(?,?,?,?,?,?) RETURNING HOMEID";
 
         Integer id = jdbcTemplate.queryForObject(homeSQL, Integer.class,
@@ -87,7 +87,8 @@ public class JDBCHomeDAO implements HomeDAO{
                 newHome.getNumberOfBathrooms(),
                 newHome.getNumberOfBedrooms(),
                 newHome.getPrice(),
-                newHome.getShortDescription()
+                newHome.getShortDescription(),
+                newHome.getImageName()
         );
 
         newHome.setHomeId(id);
@@ -130,6 +131,7 @@ public class JDBCHomeDAO implements HomeDAO{
         home.setPrice(results.getBigDecimal("price"));
         home.setNumberOfBedrooms(results.getDouble("numberOfBedrooms"));
         home.setShortDescription(results.getString("shortDescription"));
+        home.setImageName(results.getString("imageName"));
 
         Address address = new Address();
 

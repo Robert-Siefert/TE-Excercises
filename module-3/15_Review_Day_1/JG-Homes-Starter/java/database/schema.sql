@@ -29,6 +29,7 @@ CREATE TABLE address (
 CREATE TABLE home (
   homeId serial,
   mlsNumber varchar(15) not null,
+  imageName varchar(15),
   addressId int not null,
   numberOfBathrooms int,
   numberOfBedrooms int,
