@@ -84,6 +84,14 @@ input[type=text] {
     border-radius: 3px;
 }
 
+img{
+   width:150px;
+   height:150px;
+
+/*Scale down will take the necessary specified space that is 100px x 100px without stretching the image*/
+    object-fit:scale-down;
+
+}
 
 
 div.minimalistBlack {
