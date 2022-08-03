@@ -1,5 +1,8 @@
 <template>
-  <reading-list/>
+    <div>
+        <reading-list/>
+        <router-link v-bind:to="{ name: 'NewBook' }">Add a Book to Reading List</router-link>
+    </div>
 </template>
 
 <script>

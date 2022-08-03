@@ -2,7 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home'
 import MyBooks from '../views/MyBooks'
-
+import NewBook from '../views/NewBook'
+import BookDetails from '../views/Details'
 Vue.use(VueRouter);
 
 const routes = [
@@ -15,6 +16,16 @@ const routes = [
     path: '/myBooks',
     name: 'MyBooks',
     component: MyBooks
+  },
+  {
+    path: '/addBook',
+    name: 'NewBook',
+    component: NewBook
+  },
+  {
+    path: '/book/:isbn',
+    name: 'BookDetails',
+    component: BookDetails
   }
 
 ];
