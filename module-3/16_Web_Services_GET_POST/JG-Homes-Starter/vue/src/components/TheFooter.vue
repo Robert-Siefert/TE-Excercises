@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>&#169; Copyright JG Homes - No stealing stuff you Java Blue / .NET nerds</p>
+      <p>&#169; Copyright JG Homes - All Rights Reserved (Ok, not really!)</p>
   </div>
 </template>
 

@@ -21,8 +21,15 @@
           </div>
           <div class="divTableBody">
             <div class="divTableRow" v-for="home in filteredHomes" v-bind:key="home.mlsNumber">
-              <div class="divTableCell"><img v-bind:src=home.imageName></div>
-              <div class="divTableCell">{{home.address.addressLine}}</div>
+              <div class="divTableCell">
+                   <img v-bind:src=home.imageName>
+                   <div>MLS ID# {{home.mlsNumber}}</div>
+              </div>
+              <div class="divTableCell">{{home.address.addressLine}} 
+                   <div>    
+                     {{home.address.city}}, {{home.address.state}} {{home.address.zipCode}}
+                  </div>
+              </div>
               <div class="divTableCell">{{home.numberOfBedrooms}} / {{home.numberOfBathrooms}} </div>
               <div class="divTableCell">{{home.description}}</div>
               <div class="divTableCell">${{home.price}}</div>
