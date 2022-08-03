@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h3>Home</h3>
-    <p>This is our fancy home page with marketing crap to sucker people into buying stuff</p>
+    <h3 id="intro">Central Ohio's home for finding shack's for JavaScript hacks</h3>
+    <img src="../assets/shack.jpg" alt="">
   </div>
 </template>
 
@@ -10,3 +10,9 @@ export default {
   name: "home"
 };
 </script>
+
+<style scoped>
+   #intro {
+     margin:30px;
+   }
+</style>

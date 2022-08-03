@@ -32,7 +32,7 @@
               </div>
               <div class="divTableCell">{{home.numberOfBedrooms}} / {{home.numberOfBathrooms}} </div>
               <div class="divTableCell">{{home.description}}</div>
-              <div class="divTableCell">${{home.price}}</div>
+              <div class="divTableCell">${{(home.price).toFixed(2)}}</div>
             </div>
           </div>
         </div>
