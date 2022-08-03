@@ -4,6 +4,7 @@
       <book-card v-bind:book="book"/>
       </router-link>
 
+
   </div>
 </template>
 

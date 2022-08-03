@@ -15,14 +15,7 @@
 <script>
 export default {
   name: "book-details",
-  props: ["isbn"],
- computed: {
-    book() {
-      return this.$store.state.books.find((u) => {
-      u.isbn == this.$route.params.isbn;
-    });
-    }
-  },
+  props: ["book"]
   
 };
 </script>

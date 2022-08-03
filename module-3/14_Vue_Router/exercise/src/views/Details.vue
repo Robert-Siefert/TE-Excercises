@@ -1,5 +1,5 @@
 <template>
-  <book-details v-bind:isbn='this.$route.params.isbn'/>
+  <book-details v-bind:book="activeBook"/>
 </template>
 
 <script>
@@ -7,12 +7,14 @@ import BookDetails from '../components/BookDetails.vue'
 export default {
   components: { BookDetails },
   computed:{
-    book(){
-      return this.$store.state.books.find((u) => {
-        u.isbn == this.$route.params.isbn
-      });
-      
-    }
+    activeBook(){  return this.$store.state.books.find((u) => {u.isbn == this.$store.state.activeIsbn}) }
+  },
+  created() {
+    const activeIsbn = this.$route.params.isbn;
+    this.$store.commit("SET_ACTIVE_BOOK", activeIsbn);
+
+
+    
   }
 
 

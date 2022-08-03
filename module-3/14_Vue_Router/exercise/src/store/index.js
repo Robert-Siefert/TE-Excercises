@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    activeIsbn: 0 ,
     books: [
       {
         title: "Kafka by the Shore",
@@ -103,6 +104,10 @@ export default new Vuex.Store({
     },
     SAVE_BOOK(state, book) {
       state.books.push(book);
+    },
+    SET_ACTIVE_BOOK(state, isbn){
+      state.activeIsbn = isbn;
+
     }
   },
   actions: {},
