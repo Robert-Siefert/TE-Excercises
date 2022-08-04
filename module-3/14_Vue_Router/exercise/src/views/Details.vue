@@ -7,7 +7,7 @@ import BookDetails from '../components/BookDetails.vue'
 export default {
   components: { BookDetails },
   computed:{
-    activeBook(){  return this.$store.state.books.find((u) => {u.isbn == this.$store.state.activeIsbn}) }
+    activeBook(){  return this.$store.state.books.find((u) => {return u.isbn == this.$store.state.activeIsbn}) }
   },
   created() {
     const activeIsbn = this.$route.params.isbn;
